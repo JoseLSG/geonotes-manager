@@ -6,12 +6,6 @@ describe PagesController do
 
   describe "authentication of pages" do
     
-    before :all do
-
-      @user = FactoryGirl.build(:user)
-
-    end
-    
     describe "for non-signed-in users" do
       
       it "should deny access to 'index'" do
@@ -22,10 +16,17 @@ describe PagesController do
     end
     
     describe "for signed-in users" do
-      it "should grant access to 'index'" do
+      
+      before :each do
+        @user = FactoryGirl.create(:user)
         sign_in @user
-        response.should be_success
       end
+      
+      it "should grant access to 'index'" do
+        get :index
+        response.should render_template("index")
+      end
+
     end
     
   end
