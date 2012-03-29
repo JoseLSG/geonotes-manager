@@ -20,10 +20,12 @@
 #  updated_at             :datetime
 #
 
+# NOTE: to enable email confirmation, uncomment :confirmable symbole on function 'devise'
+#       AND make sure ur development.rb or production.rb have the mailer smtp server config setup correctly for your system
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
