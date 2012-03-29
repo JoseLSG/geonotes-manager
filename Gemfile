@@ -7,6 +7,7 @@ gem 'rails', '3.0.11'
 
 gem 'mysql2', '~> 0.2.17'
 gem 'jquery-rails'
+gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails'
