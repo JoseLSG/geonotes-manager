@@ -14,6 +14,7 @@ group :test, :development do
   gem 'webrat'
   gem 'guard-rspec'
   gem 'annotate'
+  gem 'factory_girl_rails'
 end
 
 # Use unicorn as the web server

@@ -7,12 +7,8 @@ describe PagesController do
   describe "authentication of pages" do
     
     before :all do
-      @attr = {
-        :email => "test@example.com",
-        :password => "example"
-      }
 
-      @user = User.create(@attr)
+      @user = FactoryGirl.build(:user)
 
     end
     
@@ -33,7 +29,5 @@ describe PagesController do
     end
     
   end
-  
-  
 
 end
