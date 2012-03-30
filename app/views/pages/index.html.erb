@@ -1,2 +1,12 @@
-<h1>Main Menu</h1>
-<%= link_to "sign out", destroy_user_session_path, :method => :delete %>
+<div id="header" data-role="header" data-position="fixed">
+	<%= link_to 'Sign out', destroy_user_session_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear" %>
+	<h1>Main Menu</h1>
+</div>
+
+<div data-role="content">
+	<ul data-role="navbar">
+		<li><%= link_to 'Map', "#" %></li>
+		<li><%= link_to 'Notes', "#" %></li>
+		<li><%= link_to 'Profile', "#" %></li>
+	</ul>
+</div>

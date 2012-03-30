@@ -42,6 +42,10 @@ describe "Layout" do
       get new_user_registration_path
     end
     
+    it "should have a 'Registration' title" do
+      response.should have_selector('h1', :content => "Registration")
+    end
+    
     it "should have a 'back' button" do
       response.should have_selector('a', :content => "Back")
     end
@@ -77,6 +81,10 @@ describe "Layout" do
       get new_user_password_path
     end
     
+    it "should have a 'Password Reset' title" do
+      response.should have_selector('h1', :content => "Password Reset")
+    end
+    
     it "should have a 'back' button" do
       response.should have_selector('a', :content => "Back")
     end
@@ -94,6 +102,36 @@ describe "Layout" do
       response.should have_selector('div #user_submit', :type => "submit", :value => "Send me reset password instructions")
     end
 
+  end
+  
+  describe "Main Menu" do
+    
+    before :each do
+      @user = FactoryGirl.create(:user)
+      post_via_redirect user_session_path, :user => {:email => @user.email, :password => @user.password}
+      get "/"
+    end
+    
+    it "should have a 'Main Menu' title" do
+      response.should have_selector('h1', :content => "Main Menu")
+    end
+    
+    it "should have a 'Sign out' button" do
+      response.should have_selector('a', :content => "Sign out")
+    end
+    
+    it "should have a 'Map' button" do
+      response.should have_selector('a', :content => "Map")
+    end
+    
+    it "should have a 'Notes' button" do
+      response.should have_selector('a', :content => "Notes")
+    end
+    
+    it "should have a 'Profile' button" do
+      response.should have_selector('a', :content => "Profile")
+    end
+    
   end
 
 end
