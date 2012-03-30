@@ -107,8 +107,7 @@ describe "Layout" do
   describe "Main Menu" do
     
     before :each do
-      @user = FactoryGirl.create(:user)
-      post_via_redirect user_session_path, :user => {:email => @user.email, :password => @user.password}
+      sign_in_as_a_valid_user
       get "/"
     end
     

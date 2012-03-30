@@ -15,6 +15,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'annotate'
   gem 'factory_girl_rails'
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
 end
 
 # Use unicorn as the web server

@@ -18,8 +18,7 @@ describe PagesController do
     describe "for signed-in users" do
       
       before :each do
-        @user = FactoryGirl.create(:user)
-        sign_in @user
+        signed_in_as_a_valid_user
       end
       
       it "should grant access to 'index'" do
