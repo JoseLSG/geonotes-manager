@@ -67,4 +67,63 @@ describe "Users" do
     end
     
   end
+  
+  describe "Profile Update" do
+    
+    before :all do
+      @user = FactoryGirl.build(:user)
+    end
+    
+    before :each do
+      sign_in_as_a_valid_user
+      visit edit_user_registration_path
+    end
+    
+    describe "failure" do
+      
+      it "should not allow update without filling-in 'current password'" do       
+        click_button "Update"   
+        response.should render_template('devise/registrations/edit')
+        response.should have_selector('div#error_explanation')
+      end
+      
+    end
+    
+    describe "success" do
+      
+      it "should allow update with 'current password' provided" do
+        fill_in "user_current_password", :with => @user.password
+        click_button "Update"
+        
+        response.should have_selector('p.notice', :content => "updated")
+        response.should render_template('pages/index')
+      end
+      
+      it "should update correctly" do
+        @new_attr = {
+          :email => "new_test@example.com",
+          :password => "new_pass"
+        }
+
+        fill_in "Email", :with => @new_attr[:email]
+        fill_in "user_current_password", :with => @user.password
+        click_button "Update"
+        
+        @modified_user = User.find(@user.id)
+        @modified_user.email.should eql @new_attr[:email]
+      end
+      
+    end
+    
+    describe "Cancel Account" do
+      
+      it "should cancel account correctly" do
+        click_link "Cancel"
+       # click_button "OK"
+        response.should render_template('pages/index')
+      end
+      
+    end
+    
+  end
 end
