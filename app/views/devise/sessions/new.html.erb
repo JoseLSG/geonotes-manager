@@ -5,25 +5,19 @@
 <div data-role="content">
 	<ul data-role="listview">
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-		  <li>
-		  	<div>
+		  <li><div id="email_section">
 		  		<%= f.label :email %>
 		  		<%= f.email_field :email %>
-		  	</div>
-			</li>
-			<li>
-			  <div>
+		  	</div></li>
+			<li><div id="password_section">
 			  	<%= f.label :password %>
 			  	<%= f.password_field :password %>
-			  </div>
-		  </li>
+			  </div></li>
 		  <br />
 		  <% if devise_mapping.rememberable? -%>
-		  <li>
-		    <div>
+		  <li><div>
 		    	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
-		    </div>
-		  </li>
+		    </div></li>
 		  <% end -%>
 			<li>
 				<div><%= f.submit "Sign in" %></div>
