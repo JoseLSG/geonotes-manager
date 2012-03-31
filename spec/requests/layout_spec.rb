@@ -173,5 +173,26 @@ describe "Layout" do
     end
     
   end
+  
+  describe "Map Page" do
+    
+    before :each do
+      sign_in_as_a_valid_user
+      get map_path
+    end
+    
+    it "should have a 'Map' title" do
+      response.should have_selector('h1', :content => "Map")
+    end
+    
+    it "should have a 'Menu' button" do
+      response.should have_selector('a', :content => "Menu")
+    end
+    
+    it "should have a 'Notes' button" do
+      response.should have_selector('a', :content => "Notes")
+    end
+    
+  end
 
 end

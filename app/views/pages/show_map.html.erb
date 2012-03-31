@@ -1,0 +1,16 @@
+<% 
+	content_for :head do
+		javascript_include_tag "map"
+	end
+%>
+<div id="header" data-role="header" data-position="fixed">
+	<%= link_to 'Menu', users_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear" %>
+	<h1>Map</h1>
+	<%= link_to 'Notes', "#", :method => :delete, "class" => "ui-btn-right", "data-icon" => "gear" %>
+</div>
+
+<div data-role="content">
+	<div id="map">
+		
+	</div>
+</div>

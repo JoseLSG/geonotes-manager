@@ -3,6 +3,7 @@ Geonotes::Application.routes.draw do
 
   root :to => "pages#index"
   match '/users', :to => "pages#index"
+  match '/map', :to => "pages#show_map"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -5,6 +5,7 @@
 
 <div data-role="content">
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	  <%= render "shared/flash_messages"%>
 	  <%= devise_error_messages! %>
 	
 	  <div id="email_section">

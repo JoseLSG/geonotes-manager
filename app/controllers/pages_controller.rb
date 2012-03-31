@@ -3,5 +3,9 @@ class PagesController < ApplicationController
   
   def index
   end
+  
+  def show_map
+    
+  end
 
 end
