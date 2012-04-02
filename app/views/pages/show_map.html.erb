@@ -1,8 +1,4 @@
-<% 
-	content_for :head do
-		javascript_include_tag "map"
-	end
-%>
+<%= javascript_include_tag "map" %>
 <div id="header" data-role="header" data-position="fixed">
 	<%= link_to 'Menu', users_path, "class" => "ui-btn-left", "data-icon" => "gear", :id => "Menu"  %>
 	<h1>Map</h1>
@@ -11,6 +7,5 @@
 
 <div data-role="content">
 	<div id="map">
-		
 	</div>
 </div>

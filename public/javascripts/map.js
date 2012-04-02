@@ -1,3 +1,14 @@
+/*
+ * map.js:
+ * 	Handles all Leaflet map settings and logic
+ * 
+ * author: Jose Saldivar (neo.jls@gmail.com)
+ * 
+ */
+
+//  After extended search and trials, needed to use the 'ready' function and include map.js directly on a non-ajax-loaded 'map page' 
+//	since using load(),on("initpage",..), etc doesn't seem to be working properly in current nor RC jquery mobile version
+
 $(function() {
 	var map = new L.Map('map');
 	map_set(map);
