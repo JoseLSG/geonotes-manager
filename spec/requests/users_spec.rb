@@ -123,7 +123,26 @@ describe "Users" do
         response.should render_template('pages/index')
       end
       
+    end  
+  end
+  
+  describe "Map Page" do
+    
+    before :each do
+      sign_in_as_a_valid_user
+      visit map_path
     end
     
+    it "should go to Menu page after clicking 'Menu' link" do
+      click_link "Menu"
+      response.should render_template('pages/index')
+    end
+    
+    it "should go to notes page after clicking 'Notes' link"# do
+      #click_link "Notes"
+      #response.should render_template('pages/show_notes')
+    #end
+    
   end
+  
 end

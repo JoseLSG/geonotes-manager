@@ -4,9 +4,9 @@
 	end
 %>
 <div id="header" data-role="header" data-position="fixed">
-	<%= link_to 'Menu', users_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear" %>
+	<%= link_to 'Menu', users_path, "class" => "ui-btn-left", "data-icon" => "gear", :id => "Menu"  %>
 	<h1>Map</h1>
-	<%= link_to 'Notes', "#", :method => :delete, "class" => "ui-btn-right", "data-icon" => "gear" %>
+	<%= link_to 'Notes', "#", "class" => "ui-btn-right", "data-icon" => "gear", :id => "Notes" %>
 </div>
 
 <div data-role="content">
