@@ -11,17 +11,26 @@
 
 $(function() {
 	var map = new L.Map('map');
+	var groupL = new L.LayerGroup();
+	
 	map_set(map);
+	
 	//Event handling - pick up coordinates where user click
 	map.on('click', function(e){
-		var latlngStr = '(' + e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3) + ')';
-		var popup = new L.Popup();
-		popup.setLatLng(e.latlng);
-		popup.setContent(latlngStr);
-		map.openPopup(popup);
+		var userMarker = new L.Marker(e.latlng);
+		var popup = new L.Popup().setLatLng(e.latlng).setContent("Edit content Stub");
+
+		userMarker.bindPopup("Edit content Stub");
+		
+		groupL.addLayer(userMarker);
+		
+		map.addLayer(userMarker);
+		userMarker.openPopup();
 	});
 	
 });
+
+
 
 function map_set(map){
 	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/1b46adf1e17046928ee782e81563176c/997/256/{z}/{x}/{y}.png', {
