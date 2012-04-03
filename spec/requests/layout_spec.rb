@@ -194,5 +194,31 @@ describe "Layout" do
     end
     
   end
+  
+  describe "Notes Page" do
+    
+    before :each do
+      sign_in_as_a_valid_user
+      get notes_path
+    end
+    
+    it "should have a 'Notes' title" do
+      response.should have_selector('h1', :content => "Notes")
+    end
+    
+    it "should have a 'Menu' button" do
+      response.should have_selector('a', :content => "Menu")
+    end
+    
+    it "should have a 'Map' button" do
+      response.should have_selector('a', :content => "Map")
+    end
+    
+    it "should have a content links" do
+      @note = FactoryGirl.create(:note)
+      get notes_path
+      response.should have_selector('a', :href => edit_note_path(@note))
+    end
+  end
 
 end

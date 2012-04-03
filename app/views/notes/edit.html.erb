@@ -1,0 +1,17 @@
+<div id="header" data-role="header" data-position="fixed">
+	<%= link_to 'Back', "#", "data-icon" => "arrow-l", "class" => "ui-btn-left", "data-rel" => "back" %>
+	<h1>Note</h1>
+</div>
+
+<div data-role="content">
+	<%= form_for(@note) do |f| %>
+	  <%= render "shared/flash_messages"%>
+	
+	  <div id="content_section">
+		  <%= f.label :content %>
+		  <%= f.text_field :content %>
+	  </div>
+	  <div><%= f.submit "Update", :id => "Update"%></div>
+	  
+	<% end %>
+</div>

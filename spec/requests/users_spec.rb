@@ -138,10 +138,60 @@ describe "Users" do
       response.should render_template('pages/index')
     end
     
-    it "should go to notes page after clicking 'Notes' link"# do
-      #click_link "Notes"
-      #response.should render_template('pages/show_notes')
-    #end
+    it "should go to notes page after clicking 'Notes' link" do
+      click_link "Notes"
+      response.should render_template('notes/index')
+    end
+    
+  end
+  
+    
+  describe "Menu Page" do
+    
+    before :each do
+      sign_in_as_a_valid_user
+      visit users_path
+    end
+    
+    it "should go to map page after clicking 'Map' link" do
+      click_link "Map"
+      response.should render_template('pages/show_map')
+    end
+    
+    it "should go to notes page after clicking 'Notes' link" do
+      click_link "Notes"
+      response.should render_template('notes/index')
+    end
+    
+    it "should go to profile page after clicking 'Profile' link" do
+      click_link "Profile"
+      response.should render_template('devise/registrations/edit')
+    end
+  end
+  
+  describe "Notes Page" do
+    
+    before :each do
+      sign_in_as_a_valid_user
+      @note = FactoryGirl.create(:note)
+      visit notes_path
+    end
+    
+    it "should go to map page after clicking 'Menu' link" do
+      click_link "Menu"
+      response.should render_template('pages/index')
+    end
+    
+    it "should go to map page after clicking 'Map' link" do
+      click_link "Map"
+      response.should render_template('pages/show_map')
+    end
+    
+    
+    it "should go to 'edit note' page after clicking on a note" do
+      click_link @note.content
+      response.should render_template('notes/edit')
+    end
     
   end
   

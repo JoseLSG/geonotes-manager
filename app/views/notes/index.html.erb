@@ -1,0 +1,16 @@
+<div id="header" data-role="header" data-position="fixed">
+	<%= link_to 'Menu', root_path, "class" => "ui-btn-left", "data-icon" => "home" %>
+	<h1>Notes</h1>
+	<%= link_to 'Map', map_path, "data-ajax" => "false", "class" => "ui-btn-right", "data-icon" => "grid" %>
+</div>
+
+<div data-role="content">
+	<%= render "shared/flash_messages"%>
+	<ul data-role="listview" data-inset="true" data-filter="true">
+		<% @notes.each do |note| %>
+			<li>
+				<%= link_to note.content, edit_note_path(note) %>
+			</li>
+		<% end %>
+	</ul>
+</div>

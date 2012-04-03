@@ -4,6 +4,9 @@ Geonotes::Application.routes.draw do
   root :to => "pages#index"
   match '/users', :to => "pages#index"
   match '/map', :to => "pages#show_map"
+  match '/notes', :to => "notes#index"
+  
+  resources :notes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
