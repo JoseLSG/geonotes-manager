@@ -10,13 +10,12 @@ class NotesController < ApplicationController
   end
   
   def create
-    geolocation = RGeo::Geographic.spherical_factory.point(params[:note][:lat], params[:note][:lon])
-    @note = current_user.notes.build(:content => params[:note][:content], 
-                                     :geolocation => geolocation)
+    geolocation = RGeo::Geographic.spherical_factory.point(params[:new_note][:lon], params[:new_note][:lat])
+    @note = current_user.notes.build(:content => params[:new_note][:content], :geolocation => geolocation)
 
     if @note.save
       respond_to do |format|
-        format.js {render :note}
+        format.js {render @note}
       end
     else
       render :text => "Note creation failed"
@@ -25,14 +24,18 @@ class NotesController < ApplicationController
   
   def edit
     @note = Note.find(params[:id])
+    @notes = Note.all
   end
   
   def update
     @note = Note.find(params[:id])
-    if @note.update_attributes(params[:note])
-      redirect_to notes_path
+    
+    if @note.update_attributes(:content => params[:note][:content])
+      respond_to do |format|
+        format.js {render @note}
+      end
     else
-      render :edit
+      render :text => "Note update failed"
     end
      
   end

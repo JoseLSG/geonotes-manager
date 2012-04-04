@@ -1,17 +1,10 @@
-<div id="header" data-role="header" data-position="fixed">
-	<%= link_to 'Back', "#", "data-icon" => "arrow-l", "class" => "ui-btn-left", "data-rel" => "back" %>
-	<h1>Note</h1>
-</div>
-
+<%= javascript_include_tag "map" %>
+<%= render "shared/map_header"%>
 <div data-role="content">
-	<%= form_for(@note) do |f| %>
-	  <%= render "shared/flash_messages"%>
-	
-	  <div id="content_section">
-		  <%= f.label :content %>
-		  <%= f.text_field :content %>
-	  </div>
-	  <div><%= f.submit "Update", :id => "Update"%></div>
-	  
-	<% end %>
+	<div id="map"></div>
+</div>
+<div class="hidden">
+	<%= render "notes/edit_note_form" %>
+	<%= render "notes/note_form" %>
+	<%= render @notes %>
 </div>

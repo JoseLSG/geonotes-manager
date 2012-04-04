@@ -1,18 +1,9 @@
 <%= javascript_include_tag "map" %>
-<div id="header" data-role="header" data-position="fixed">
-	<%= link_to 'Menu', users_path, "class" => "ui-btn-left", "data-icon" => "home", :id => "Menu"  %>
-	<h1>Map</h1>
-	<%= link_to 'Notes', notes_path, "class" => "ui-btn-right", "data-icon" => "star", :id => "Notes" %>
-	<div data-role="navbar">
-		<ul>
-			<li><a href="#" id="navigate" class="ui-btn-active">Navigate</a></li>
-			<li><a href="#" id="add_note">Add Note</a></li>
-		</ul>
-	</div>
-</div>
-
+<%= render "shared/map_header"%>
 <div data-role="content">
 	<div id="map"></div>
 </div>
-
-<%= render "notes/note_form"%>
+<div class="hidden">
+	<%= render "notes/note_form"%>
+	<%= render @notes %>
+</div>

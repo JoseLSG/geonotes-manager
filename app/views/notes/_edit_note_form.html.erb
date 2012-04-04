@@ -1,0 +1,14 @@
+<div id="edit_note_handle">
+	<div id="edit_note_form" class="popup">
+	<%= form_for @note, :html => {:'data-ajax' => :false, :'data-type' => :html}, :remote => true do |f| %>
+		  <%= render "shared/flash_messages"%>	
+		  <div id="content_section">
+			  <%= f.label :content %>
+			  <%= f.text_area :content %>
+			  <%= hidden_field_tag :note_lat, (@note.geolocation ? @note.geolocation.lat : ""), :name => "note[lat]" %>
+				<%= hidden_field_tag :note_lon, (@note.geolocation ? @note.geolocation.lon : ""), :name => "note[lon]" %>
+		  </div>
+		  <div><%= f.submit "Submit", :id => "Submit"%></div>	  
+	<% end %>
+	</div>
+</div>

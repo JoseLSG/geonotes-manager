@@ -1,6 +1,10 @@
-<div id="note_<%=@note.id%>" class="popup">
+<% note ||= @note %>
+
+<div id="note_<%=note.id%>" type="note" class="popup">
 	<p><%= render "shared/flash_messages"%></p>
-	<p><%= @note.content %></p>
-	<%= link_to 'Edit', edit_note_path(@note) %> |
-	<%= link_to 'Delete', @note, :method => :delete %>
+	<p><%= note.content %></p>
+	<%= hidden_field_tag :lat, note.geolocation.lat %>
+	<%= hidden_field_tag :lon, note.geolocation.lon %> 
+	<%= link_to 'Edit', edit_note_path(note), :"data-role" => :button, :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
+	<%= link_to 'Delete', note, :method => :delete, :"data-role" => :button, :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
 </div>
