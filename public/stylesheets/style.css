@@ -5,3 +5,11 @@
 
 }
 
+.hidden {
+	display:none;
+}
+
+.popup {
+	width: 200px;
+}
+

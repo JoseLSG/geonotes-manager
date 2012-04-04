@@ -1,0 +1,15 @@
+<div id="form_handle" class="hidden">
+	<div id="new_note_form" class="popup">
+	<%= form_for :note, :url => notes_create_path, :html => {:method => :post, :'data-ajax' => :false, :'data-type' => :html}, :remote => true do |f| %>
+		  <%= render "shared/flash_messages"%>	
+		  <div id="content_section">
+			  <%= f.label :content %>
+			  <%= f.text_area :content %>
+			  <%= f.hidden_field :lat %>
+			  <%= f.hidden_field :lon %> 
+		  </div>
+		  <div><%= f.submit "Submit", :id => "Submit"%></div>
+		  
+	<% end %>
+	</div>
+</div>

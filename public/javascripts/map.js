@@ -2,7 +2,7 @@
  * map.js:
  * 	Handles all Leaflet map settings and logic
  * 
- * author: Jose Saldivar (neo.jls@gmail.com)
+ * author: Jose Saldivar
  * 
  */
 
@@ -12,22 +12,43 @@
 $(function() {
 	var map = new L.Map('map');
 	var groupL = new L.LayerGroup();
+	var userMarker = null;
 	
 	map_set(map);
 	
-	//Event handling - pick up coordinates where user click
-	map.on('click', function(e){
-		var userMarker = new L.Marker(e.latlng);
-		var popup = new L.Popup().setLatLng(e.latlng).setContent("Edit content Stub");
-
-		userMarker.bindPopup("Edit content Stub");
+	//Event handling - add_note mode/navigate mode
+	$("#add_note").on("click",function(){ map.on('click', map_click) });
+	$("#navigate").on("click",function(){ map.off('click', map_click) });
+	
+	function map_click(e){
+		userMarker = new L.Marker(e.latlng);
+		//var popup = new L.Popup().setLatLng(e.latlng).setContent("Edit content Stub");
+		
+		$("#content_section #note_lat").attr("value", e.latlng.lat);
+		$("#content_section #note_lon").attr("value", e.latlng.lng);
+		var form = $("#form_handle").html();
+		userMarker.bindPopup(form);
 		
 		groupL.addLayer(userMarker);
 		
 		map.addLayer(userMarker);
 		userMarker.openPopup();
-	});
+		
+		//handle new note submit closing popup
+		$("form[data-remote]").each(function(i, form){
+			 var f = $(form)
+			 f.on("ajax:success", function(evt, data, status, xhr){ 
+	            userMarker.closePopup().bindPopup(xhr.responseText).openPopup();
+	        })
+	        
+			 f.on("ajax:error", function(evt, xhr, status, error){ 
+	            userMarker.closePopup().bindPopup("failed to create, delete marker").openPopup();
+	        })
+		});
+		
+	}
 	
+
 });
 
 

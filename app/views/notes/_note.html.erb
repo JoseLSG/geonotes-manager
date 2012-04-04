@@ -1,0 +1,6 @@
+<div id="note_<%=@note.id%>" class="popup">
+	<p><%= render "shared/flash_messages"%></p>
+	<p><%= @note.content %></p>
+	<%= link_to 'Edit', edit_note_path(@note) %> |
+	<%= link_to 'Delete', @note, :method => :delete %>
+</div>

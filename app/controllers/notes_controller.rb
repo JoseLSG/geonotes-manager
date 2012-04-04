@@ -5,6 +5,24 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
   
+  def show
+    
+  end
+  
+  def create
+    geolocation = RGeo::Geographic.spherical_factory.point(params[:note][:lat], params[:note][:lon])
+    @note = current_user.notes.build(:content => params[:note][:content], 
+                                     :geolocation => geolocation)
+
+    if @note.save
+      respond_to do |format|
+        format.js {render :note}
+      end
+    else
+      render :text => "Note creation failed"
+    end
+  end
+  
   def edit
     @note = Note.find(params[:id])
   end

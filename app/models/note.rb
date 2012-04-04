@@ -11,6 +11,7 @@
 #
 
 class Note < ActiveRecord::Base
+  belongs_to :user
   set_rgeo_factory_for_column(:geolocation, RGeo::Geographic.spherical_factory)
   
   validates :geolocation, :presence => true

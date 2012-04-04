@@ -6,7 +6,7 @@
 <div data-role="content">
 	<%= render "shared/flash_messages"%>
 	<ul data-role="listview" data-inset="true">
-		<li><%= link_to 'Map', map_path, "data-ajax" => "false", :id => "Map" %></li>
+		<li><%= link_to 'Map', map_path, :'data-ajax' => :false, :id => "Map" %></li>
 		<li><%= link_to 'Notes', notes_path, :id => "Notes" %></li>
 		<li><%= link_to 'Profile', edit_user_registration_path, :id => "Profile" %></li>
 	</ul>
