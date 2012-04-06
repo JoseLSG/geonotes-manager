@@ -16,5 +16,9 @@ class Note < ActiveRecord::Base
   
   validates :geolocation, :presence => true
   validates :user_id, :presence => true
+  
+  def self.geolocation(latitude,longitude)
+    RGeo::Geographic.spherical_factory.point(longitude, latitude)
+  end
    
 end

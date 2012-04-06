@@ -9,7 +9,7 @@
 	<ul data-role="listview" data-inset="true" data-filter="true">
 		<% @notes.each do |note| %>
 			<li>
-				<%= link_to note.content, edit_note_path(note) %>
+				<%= link_to note.content, note, :'data-ajax' => :false %>
 			</li>
 		<% end %>
 	</ul>

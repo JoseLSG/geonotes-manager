@@ -6,11 +6,12 @@ class NotesController < ApplicationController
   end
   
   def show
-    
+    @note = Note.find(params[:id])
+    @notes = Note.all
   end
   
   def create
-    geolocation = RGeo::Geographic.spherical_factory.point(params[:new_note][:lon], params[:new_note][:lat])
+    geolocation = Note.geolocation(params[:new_note][:lat], params[:new_note][:lon])
     @note = current_user.notes.build(:content => params[:new_note][:content], :geolocation => geolocation)
 
     if @note.save

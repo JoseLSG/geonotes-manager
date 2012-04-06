@@ -14,21 +14,22 @@ $(function() {
 	var map = map_index();
 
 	if($("#edit_note_handle").length == 1) {
-		map_edit(map);
+		map_edit_note(map);
 
+	} else if ($("#show_note_handle").length == 1) {
+		map_show_note(map);
+		
 	} else {
 		map.locateAndSetView(16);
 	}
 
 });
 
-
 function map_index(){
 	var map = new L.Map('map'),
 			groupL = new L.LayerGroup(),
 			userMarker = null,
 			notes_ary = [];
-	
 	
 	map_set(map);
 	//map.locateAndSetView(16);
@@ -59,21 +60,28 @@ function map_index(){
 	
 };
 
-function map_edit(map){
+function map_edit_note(map){
+	var marker = locate_marker_popup("#edit_note_handle", map);
+	handle_note_submit_response(marker);
 
-	var note = $("#edit_note_handle");
+};
+
+function map_show_note(map){
+	locate_marker_popup("#show_note_handle", map);
+
+};
+
+function locate_marker_popup(element_id, map){
+	var note = $(element_id);
 	var lat = note.find("#note_lat").attr("value");
 	var lon = note.find("#note_lon").attr("value");
 
 	var spot = new L.LatLng(lat, lon);
-	editMarker = new L.Marker(spot);
-
+	var marker = new L.Marker(spot);
 	map.setView(spot, 13);
-	map.addLayer(editMarker);
-	editMarker.bindPopup(note.get(0)).openPopup();
-
-	handle_note_submit_response(editMarker);
-
+	map.addLayer(marker);
+	marker.bindPopup(note.get(0)).openPopup();
+	return marker;
 };
 
 function handle_note_submit_response(marker){
@@ -89,20 +97,20 @@ function handle_note_submit_response(marker){
 		})
 	});
 
-}
+};
 
 function set_nav_controls(map, callback){
 	
 	$("#add_note").on("click",function(){ map.on('click', callback) });
 	$("#navigate").on("click",function(){ map.off('click', callback) });
 	
-}
+};
 
 function load_notes(map){
 
-	$("[type=note]").each(function(i, elm) {
-		var lat = $(this).find('#lat').val(), 
-				lon = $(this).find('#lon').val(), 
+	$("#load_notes").find("[type=note]").each(function(i, elm) {
+		var lat = $(this).find('#note_lat').val(), 
+				lon = $(this).find('#note_lon').val(), 
 				html = $(this).addClass("popup").get(0);
 
 		//notes_ary[i] = new L.LatLng(lat, lon);

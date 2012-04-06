@@ -217,7 +217,7 @@ describe "Layout" do
     it "should have a content links" do
       @note = FactoryGirl.create(:note)
       get notes_path
-      response.should have_selector('a', :href => edit_note_path(@note))
+      response.should have_selector('a', :href => note_path(@note))
     end
   end
 

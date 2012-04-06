@@ -190,7 +190,7 @@ describe "Users" do
     
     it "should go to 'edit note' page after clicking on a note" do
       click_link @note.content
-      response.should render_template('notes/edit')
+      response.should render_template('notes/show')
     end
     
   end
