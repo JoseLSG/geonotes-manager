@@ -39,5 +39,12 @@ class NotesController < ApplicationController
     end
      
   end
+  
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+
+    redirect_to :controller => :pages, :action => :show_map
+  end
 
 end

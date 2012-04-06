@@ -6,6 +6,7 @@ Geonotes::Application.routes.draw do
   match '/map', :to => "pages#show_map"
   match '/notes', :to => "notes#index"
   match '/create_note', :to => "notes#create"
+  match '/delete_note/:id', :to => "notes#destroy"
   resources :notes
 
   # The priority is based upon order of creation:

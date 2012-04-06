@@ -6,5 +6,5 @@
 	<%= hidden_field_tag :lat, note.geolocation.lat %>
 	<%= hidden_field_tag :lon, note.geolocation.lon %> 
 	<%= link_to 'Edit', edit_note_path(note), :"data-role" => :button, :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
-	<%= link_to 'Delete', note, :method => :delete, :"data-role" => :button, :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
+	<%= link_to 'Delete', "/delete_note/#{note.id}", :"data-role" => :button, :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
 </div>
