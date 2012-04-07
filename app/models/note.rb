@@ -12,13 +12,33 @@
 
 class Note < ActiveRecord::Base
   belongs_to :user
+  has_and_belongs_to_many :tags, :uniq => true
+  
   set_rgeo_factory_for_column(:geolocation, RGeo::Geographic.spherical_factory)
   
   validates :geolocation, :presence => true
   validates :user_id, :presence => true
   
+  attr_accessor :tag_list
+  
+  before_save :save_tags
+  
   def self.geolocation(latitude,longitude)
     RGeo::Geographic.spherical_factory.point(longitude, latitude)
+  end
+   
+  def tag_list
+    read_attribute(:tag_list) || tags.map{|t| t.name }.join(", ")
+  end
+  
+  def tag_list=(value)
+    write_attribute(:tag_list, value)
+  end
+  
+  def save_tags
+      self.tags = tag_list.split(/\s*,\s*/).uniq.map{ |tag_name| 
+                    Tag.find_or_create_by_name(:name => tag_name)
+                  }
   end
    
 end

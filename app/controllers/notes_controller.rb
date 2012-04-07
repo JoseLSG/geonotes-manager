@@ -12,12 +12,13 @@ class NotesController < ApplicationController
   
   def create
     geolocation = Note.geolocation(params[:new_note][:lat], params[:new_note][:lon])
-    @note = current_user.notes.build(:content => params[:new_note][:content], :geolocation => geolocation)
+    @note = current_user.notes.build(:content => params[:new_note][:content], :geolocation => geolocation, :tag_list => params[:new_note][:tag_list])
 
-    if @note.save
+    if @note.save         
       respond_to do |format|
         format.js {render @note}
       end
+      
     else
       render :text => "Note creation failed"
     end
@@ -31,7 +32,7 @@ class NotesController < ApplicationController
   def update
     @note = Note.find(params[:id])
     
-    if @note.update_attributes(:content => params[:note][:content])
+    if @note.update_attributes(:content => params[:note][:content], :tag_list => params[:note][:tag_list])
       respond_to do |format|
         format.js {render @note}
       end

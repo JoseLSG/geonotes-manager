@@ -5,6 +5,8 @@
 		  <div id="content_section">
 			  <%= f.label :content %>
 			  <%= f.text_area :content %>
+			  <%= f.label "Tags" %>
+			  <%= f.text_field :tag_list %>
 			  <%= hidden_field_tag :note_lat, (@note.geolocation ? @note.geolocation.lat : ""), :name => "note[lat]" %>
 				<%= hidden_field_tag :note_lon, (@note.geolocation ? @note.geolocation.lon : ""), :name => "note[lon]" %>
 		  </div>

@@ -11,12 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402224516) do
+ActiveRecord::Schema.define(:version => 20120406210656) do
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
     t.string   "content"
     t.spatial  "geolocation", :limit => {:type=>"point"}
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes_tags", :id => false, :force => true do |t|
+    t.integer "note_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

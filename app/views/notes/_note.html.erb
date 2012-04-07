@@ -3,6 +3,7 @@
 <div id="note_<%=note.id%>" type="note" class="popup">
 	<p><%= render "shared/flash_messages"%></p>
 	<p><%= note.content %></p>
+	<p>Tags: <%= note.tag_list %></p>
 	<%= hidden_field_tag :note_lat, note.geolocation.lat %>
 	<%= hidden_field_tag :note_lon, note.geolocation.lon %> 
 	<%= link_to 'Edit', edit_note_path(note), :"data-role" => :button, :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
