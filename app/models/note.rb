@@ -19,12 +19,18 @@ class Note < ActiveRecord::Base
   validates :geolocation, :presence => true
   validates :user_id, :presence => true
   
-  attr_accessor :tag_list
+  attr_accessor :lat, :lon, :tag_list
   
+  before_validation :set_geolocation
   before_save :save_tags
   
-  def self.geolocation(latitude,longitude)
-    RGeo::Geographic.spherical_factory.point(longitude, latitude)
+  
+  def lat
+    read_attribute(:lat) || geolocation.latitude
+  end
+  
+  def lon
+    read_attribute(:lon) || geolocation.longitude
   end
    
   def tag_list
@@ -35,10 +41,16 @@ class Note < ActiveRecord::Base
     write_attribute(:tag_list, value)
   end
   
+  private
+  
   def save_tags
-      self.tags = tag_list.split(/\s*,\s*/).uniq.map{ |tag_name| 
-                    Tag.find_or_create_by_name(:name => tag_name)
-                  }
+    self.tags = tag_list.split(/\s*,\s*/).uniq.map{ |tag_name| 
+                  Tag.find_or_create_by_name(:name => tag_name)
+                }
+  end
+  
+  def set_geolocation
+    self.geolocation = RGeo::Geographic.spherical_factory.point(lon, lat)
   end
    
 end

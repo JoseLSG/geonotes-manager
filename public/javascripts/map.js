@@ -76,11 +76,11 @@ function locate_marker_popup(element_id, map){
 	var lat = note.find("#note_lat").attr("value");
 	var lon = note.find("#note_lon").attr("value");
 
-	var spot = new L.LatLng(lat, lon);
-	var marker = new L.Marker(spot);
-	map.setView(spot, 13);
+	var marker = set_marker(lat,lon,note.get(0))
+	
+	map.setView(new L.LatLng(lat, lon), 13);
 	map.addLayer(marker);
-	marker.bindPopup(note.get(0)).openPopup();
+	marker.openPopup();
 	return marker;
 };
 

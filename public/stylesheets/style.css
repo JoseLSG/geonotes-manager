@@ -17,3 +17,12 @@
 	padding: .6em 25px;
 }
 
+.note_tag{
+	padding-left: 40px;
+	font-size: medium;
+}
+
+.note_content{
+	font-size: large;
+}
+

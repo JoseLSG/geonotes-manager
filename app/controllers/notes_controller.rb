@@ -11,8 +11,7 @@ class NotesController < ApplicationController
   end
   
   def create
-    geolocation = Note.geolocation(params[:new_note][:lat], params[:new_note][:lon])
-    @note = current_user.notes.build(:content => params[:new_note][:content], :geolocation => geolocation, :tag_list => params[:new_note][:tag_list])
+    @note = current_user.notes.build(params[:new_note])
 
     if @note.save         
       respond_to do |format|

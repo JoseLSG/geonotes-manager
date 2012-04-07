@@ -7,10 +7,13 @@
 <div data-role="content">
 	<%= render "shared/flash_messages"%>
 	<ul data-role="listview" data-inset="true" data-filter="true">
+
 		<% @notes.each do |note| %>
 			<li>
-				<%= link_to note.content, note, :'data-ajax' => :false %>
+					<%= link_to note.content, note, :'data-ajax' => :false, :class => :note_content %>
+					<p class="note_tag">Tags: <%= note.tag_list %></p>
 			</li>
 		<% end %>
+	
 	</ul>
 </div>
