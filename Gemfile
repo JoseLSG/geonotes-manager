@@ -7,7 +7,7 @@ gem 'rails', '3.0.11'
 
 gem 'mysql2', '~> 0.2.17'
 gem 'jquery-rails'
-gem 'devise'
+gem 'devise', '1.5.3'
 gem 'activerecord-mysql2spatial-adapter' # dont forget to change adapter name to 'mysql2spatial'
 
 group :test, :development do
