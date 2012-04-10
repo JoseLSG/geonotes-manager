@@ -17,13 +17,15 @@
 	padding: .6em 25px;
 }
 
-.note_tag {
-	padding-left: 40px;
-	font-size: medium;
-}
-
 .note_content {
 	font-size: large;
+	min-height: 60px;
+	padding-left: 100px;
+}
+
+.note_tag {
+	font-weight: normal;
+	font-size: medium;
 }
 
 .tag {

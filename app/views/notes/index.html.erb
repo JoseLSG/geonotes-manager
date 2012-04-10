@@ -10,8 +10,12 @@
 
 		<% @notes.each do |note| %>
 			<li>
-					<%= link_to note.content, note, :'data-ajax' => :false, :class => :note_content %>
-					<p class="note_tag">Tags: <%= note.tag_list %></p>
+					<%= link_to note, :'data-ajax' => :false, :class => :note_content do %>
+						<h3><%= note.content %></h3>
+						<% if note.tag_list.length != 0 then %>
+						Tags: <span class="note_tag"><%= note.tag_list %></span>
+						<% end %>
+					<% end %>
 			</li>
 		<% end %>
 	
