@@ -2,12 +2,12 @@ class NotesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @notes = Note.all
+    @notes = current_user.notes
   end
   
   def show
-    @note = Note.find(params[:id])
-    @notes = Note.all
+    @note = current_user.notes.find(params[:id])
+    @notes = current_user.notes
   end
   
   def create
@@ -24,8 +24,8 @@ class NotesController < ApplicationController
   end
   
   def edit
-    @note = Note.find(params[:id])
-    @notes = Note.all
+    @note = current_user.notes.find(params[:id])
+    @notes = current_user.notes
   end
   
   def update

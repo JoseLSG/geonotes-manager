@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
   
   def show_map
-    @notes = Note.all
+    @notes = current_user.notes
     @note = Note.new
   end
 
