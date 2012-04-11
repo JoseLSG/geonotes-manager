@@ -128,7 +128,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-mysql2spatial-adapter
   annotate
-  devise
+  devise (= 1.5.3)
   factory_girl_rails
   guard-rspec
   jquery-rails

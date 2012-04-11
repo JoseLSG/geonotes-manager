@@ -8,7 +8,10 @@
 		  <%= render "shared/flash_messages"%>
 		  <%= devise_error_messages! %>
 		
-		  <div id="email_section">
+		  <div id="login_section">
+		  	<%= f.label :username %>
+		  	<%= f.text_field :username %>
+		  	
 		  	<%= f.label :email %>
 		  	<%= f.email_field :email %>
 		  </div>

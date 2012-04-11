@@ -2,6 +2,20 @@ require 'spec_helper'
 
 describe "Layout" do
   
+  describe "Login" do
+    
+    it "should be able to allow access with an username" do
+      sign_in_as_a_valid_user_with_username
+      get "/"
+    end
+    
+    it "should be able to allow access with an email" do
+      sign_in_as_a_valid_user_with_email
+      get "/"
+    end
+    
+  end
+  
   describe "Sign in" do
     
     before :each do
@@ -12,9 +26,9 @@ describe "Layout" do
       response.should have_selector('h1', :content => "GeoNotes Manager")
     end
     
-    it "should have an email input section" do
-      response.should have_selector('div #email_section label', :content => "Email")
-      response.should have_selector('div #email_section input', :type => "email")
+    it "should have a login input section" do
+      response.should have_selector('div #login_section label', :content => "Username")
+      response.should have_selector('div #login_section input', :type => "text")
     end
     
     it "should have an password input section" do
@@ -54,9 +68,11 @@ describe "Layout" do
       response.should have_selector('h1', :content => "Registration")
     end
     
-    it "should have an email input section" do
-      response.should have_selector('div #email_section label', :content => "Email")
-      response.should have_selector('div #email_section input', :type => "email")
+    it "should have an login input section" do
+      response.should have_selector('div #login_section label', :content => "Username")
+      response.should have_selector('div #login_section input', :type => "text")
+      response.should have_selector('div #login_section label', :content => "Email")
+      response.should have_selector('div #login_section input', :type => "email")
     end
     
     it "should have an password input section" do
@@ -93,9 +109,10 @@ describe "Layout" do
       response.should have_selector('h1', :content => "Password Reset")
     end
     
-    it "should have an email input section" do
-      response.should have_selector('div #email_section label', :content => "Email")
-      response.should have_selector('div #email_section input', :type => "email")
+    it "should have a login input section" do
+      response.should have_selector('div #login_section label', :content => "Username")
+      response.should have_selector('div #login_section label', :content => "email")
+      response.should have_selector('div #login_section input', :type => "text")
     end
     
     it "should have a 'send instructions' button" do

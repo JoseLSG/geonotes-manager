@@ -11,8 +11,8 @@ describe "Users" do
     describe "failure" do
       it "should not proceed to index page" do
         visit new_user_session_path
-        fill_in "Email",        :with => ""
-        fill_in "Password",     :with => ""
+        fill_in "Username or email",        :with => ""
+        fill_in "Password",                 :with => ""
         click_button
         
         response.should render_template('devise/sessions/new')
@@ -23,8 +23,8 @@ describe "Users" do
     describe "success" do
       it "should allow access to index page" do
         visit new_user_session_path
-        fill_in "Email",        :with => @user.email
-        fill_in "Password",     :with => @user.password
+        fill_in "Username or email",        :with => @user.email
+        fill_in "Password",                 :with => @user.password
         click_button
         
         response.should have_selector('p.notice', :content => "Signed in")

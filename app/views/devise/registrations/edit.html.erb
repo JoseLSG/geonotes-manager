@@ -9,6 +9,9 @@
 	  <%= devise_error_messages! %>
 	
 	  <div id="email_section">
+		  <%= f.label :username %>
+		  <%= f.text_field :username %> 
+		  
 		  <%= f.label :email %>
 		  <%= f.email_field :email %>
 	  </div>

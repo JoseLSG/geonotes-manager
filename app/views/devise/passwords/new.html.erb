@@ -9,8 +9,12 @@
 		  <%= render "shared/flash_messages"%>
 		  <%= devise_error_messages! %>
 		
-		  <li><div id="email_section"><%= f.label :email %><br />
-		  <%= f.email_field :email %></div></li>
+		  <li>
+		  	<div id="login_section">
+		  		<%= f.label :login %>
+		  		<%= f.text_field :login %>
+		  	</div>
+		  </li>
 		
 		  <div><%= f.submit "Send me reset password instructions" %></div>
 		<% end %>
