@@ -11,5 +11,11 @@ require 'spec_helper'
 #   end
 # end
 describe NotesHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "tag_links" do
+    it "should return links based on the passed Tag objects" do   
+      links = helper.tag_links([Tag.new(:name => "test1"), Tag.new(:name => "test2")])
+      links.should have_selector('a', :content => "test1")
+      links.should have_selector('a', :content => "test2")
+    end
+  end
 end

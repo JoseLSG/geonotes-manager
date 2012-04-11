@@ -11,5 +11,9 @@
 require 'spec_helper'
 
 describe Tag do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should require a tag name" do
+    @tag = FactoryGirl.build(:tag)
+    @tag.name = ""
+    @tag.should_not be_valid
+  end
 end
