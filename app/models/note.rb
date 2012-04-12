@@ -11,6 +11,8 @@
 #
 
 class Note < ActiveRecord::Base
+  include Geoinfo
+    
   belongs_to :user
   has_and_belongs_to_many :tags, :uniq => true
   
@@ -22,7 +24,7 @@ class Note < ActiveRecord::Base
   attr_accessor :lat, :lon, :tag_list
   
   before_validation :set_geolocation
-  before_save :save_tags
+  before_save :save_attributes
   
   def lat
     read_attribute(:lat) || geolocation.latitude
@@ -50,6 +52,19 @@ class Note < ActiveRecord::Base
   
   private
   
+  def save_attributes
+    save_tags
+    save_location
+  end
+  
+  def save_location
+    coordinates(self.lat, self.lon)
+    
+    puts location_info
+    puts nearest_street
+
+  end
+  
   def save_tags
     self.tags = tag_list.split(/\s*,\s*/).uniq.map{ |tag_name| 
                   Tag.find_or_create_by_name(:name => tag_name)
@@ -59,5 +74,5 @@ class Note < ActiveRecord::Base
   def set_geolocation
     self.geolocation = RGeo::Geographic.spherical_factory.point(lon, lat)
   end
-   
+
 end

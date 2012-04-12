@@ -9,6 +9,7 @@ gem 'mysql2', '~> 0.2.17'
 gem 'jquery-rails'
 gem 'devise', '1.5.3'
 gem 'activerecord-mysql2spatial-adapter' # dont forget to change adapter name to 'mysql2spatial'
+gem 'httparty'
 
 group :test, :development do
   gem 'rspec-rails'

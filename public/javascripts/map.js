@@ -90,11 +90,19 @@ function handle_note_submit_response(marker){
 		var f = $(form)
 		f.on("ajax:success", function(evt, data, status, xhr) {
 			marker.closePopup().bindPopup(xhr.responseText).openPopup();
-		})
+		});
+		
+		f.on("click", function(evt, data, status, xhr) {
+			$.mobile.showPageLoadingMsg();
+		});
+		
+		f.on("ajax:complete", function(evt, data, status, xhr) {
+			$.mobile.hidePageLoadingMsg();
+		});
 
 		f.on("ajax:error", function(evt, xhr, status, error) {
 			marker.closePopup().bindPopup("failed to edit, delete marker").openPopup();
-		})
+		});
 	});
 
 };
