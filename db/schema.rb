@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411134303) do
+ActiveRecord::Schema.define(:version => 20120412045715) do
+
+  create_table "locals", :force => true do |t|
+    t.string   "city"
+    t.string   "borough"
+    t.string   "street"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
@@ -19,11 +27,21 @@ ActiveRecord::Schema.define(:version => 20120411134303) do
     t.spatial  "geolocation", :limit => {:type=>"point"}
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "region_id"
+    t.integer  "local_id"
   end
 
   create_table "notes_tags", :id => false, :force => true do |t|
     t.integer "note_id"
     t.integer "tag_id"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.string   "continent"
+    t.string   "country"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|

@@ -22,7 +22,8 @@ module Geoinfo
     if list.class == Hash  #if the list has only 1 element, its going to be a hash and not array class
       street = list
     else
-      street = list.sort_by{|x| x[:distance.to_s]}.first
+      street = list.first
+      #street = list.sort_by{|x| x[:distance.to_s]}.first
     end
     
     (street[:distance.to_s].to_f < STREET_MAX_DISTANCE)? street : nil

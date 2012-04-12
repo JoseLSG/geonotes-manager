@@ -14,6 +14,8 @@ class Note < ActiveRecord::Base
   include Geoinfo
     
   belongs_to :user
+  belongs_to :region
+  belongs_to :local
   has_and_belongs_to_many :tags, :uniq => true
   
   set_rgeo_factory_for_column(:geolocation, RGeo::Geographic.spherical_factory)
@@ -60,8 +62,25 @@ class Note < ActiveRecord::Base
   def save_location
     coordinates(self.lat, self.lon)
     
-    puts location_info
-    puts nearest_street
+    ns = nearest_street
+    li = location_info
+    puts ns
+    puts li
+    
+   self.region = Region.where(
+                    :continent  => li[:continent],
+                    :country    => li[:country],
+                    :state      => li[:state]
+                  ).first_or_create
+                  
+   self.local = Local.where(
+                  :city     => li[:city],
+                  :borough  => li[:borough],
+                  :street   => ns[:name]
+                ).first_or_create
+                
+    puts self.region.inspect
+    puts self.local.inspect
 
   end
   
