@@ -92,7 +92,7 @@ function handle_note_submit_response(marker){
 			marker.closePopup().bindPopup(xhr.responseText).openPopup();
 		});
 		
-		f.on("click", function(evt, data, status, xhr) {
+		f.find("#Submit").on("click", function(evt, data, status, xhr) {
 			$.mobile.showPageLoadingMsg();
 		});
 		
