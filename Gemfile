@@ -1,11 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.11'
+gem 'rails', '3.2.2'
+#gem 'rails', '3.1.3'
+#gem 'rails', '3.0.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.2.17'
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'devise', '1.5.3'
 gem 'activerecord-mysql2spatial-adapter' # dont forget to change adapter name to 'mysql2spatial'

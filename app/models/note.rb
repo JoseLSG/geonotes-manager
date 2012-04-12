@@ -28,29 +28,29 @@ class Note < ActiveRecord::Base
   before_validation :set_geolocation
   before_save :save_attributes
   
-  def lat
-    read_attribute(:lat) || geolocation.latitude
-  end
+  # def lat
+    # read_attribute(:lat) || geolocation.latitude
+  # end
   
-  def lat=(value)
-    write_attribute(:lat, value)
-  end
+  # def lat=(value)
+    # write_attribute(:lat, value)
+  # end
   
-  def lon
-    read_attribute(:lon) || geolocation.longitude
-  end
+  # def lon
+    # read_attribute(:lon) || geolocation.longitude
+  # end
     
-  def lon=(value)
-    write_attribute(:lon, value)
-  end
+  # def lon=(value)
+    # write_attribute(:lon, value)
+  # end
   
   def tag_list
     read_attribute(:tag_list) || tags.map{|t| t.name }.join(", ")
   end
   
-  def tag_list=(value)
-    write_attribute(:tag_list, value)
-  end
+  # def tag_list=(value)
+    # write_attribute(:tag_list, value)
+  # end
   
   private
   
