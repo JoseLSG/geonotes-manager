@@ -18,8 +18,6 @@ class Note < ActiveRecord::Base
   belongs_to :local
   has_and_belongs_to_many :tags, :uniq => true
   
-  # set_rgeo_factory_for_column(:geolocation, RGeo::Geographic.spherical_factory)
-  
   validates :latitude, :presence => true
   validates :longitude, :presence => true
   validates :user_id, :presence => true
@@ -29,29 +27,13 @@ class Note < ActiveRecord::Base
   before_validation :set_geolocation
   before_save :save_attributes
   
-  # def lat
-    # read_attribute(:lat) || geolocation.latitude
-  # end
-  
-  # def lat=(value)
-    # write_attribute(:lat, value)
-  # end
-  
-  # def lon
-    # read_attribute(:lon) || geolocation.longitude
-  # end
-    
-  # def lon=(value)
-    # write_attribute(:lon, value)
-  # end
-  
   def tag_list
     read_attribute(:tag_list) || tags.map{|t| t.name }.join(", ")
   end
   
-  # def tag_list=(value)
-    # write_attribute(:tag_list, value)
-  # end
+  def tag_list=(value)
+    write_attribute(:tag_list, value)
+  end
   
   private
   
@@ -65,8 +47,6 @@ class Note < ActiveRecord::Base
     
     ns = nearest_street
     li = location_info
-    # puts ns
-    # puts li
 
    self.region = Region.where(
                     :continent  => li[:continent],
@@ -79,22 +59,21 @@ class Note < ActiveRecord::Base
                   :borough  => (li[:borough] unless li.nil?),
                   :street   => (ns[:name] unless ns.nil?)
                 ).first_or_create
-                
-    # puts self.region.inspect
-    # puts self.local.inspect
-
   end
   
   def save_tags
+    puts self.tags
     self.tags = tag_list.split(/\s*,\s*/).uniq.map{ |tag_name| 
                   Tag.find_or_create_by_name(:name => tag_name)
                 }
+                
+                puts "==="
+                puts self.tags
   end
   
   def set_geolocation
-    #self.geolocation = RGeo::Geographic.spherical_factory.point(lon, lat)
-    self.latitude = lat
-    self.longitude = lon
+    self.latitude ||= lat
+    self.longitude ||= lon
   end
 
 end

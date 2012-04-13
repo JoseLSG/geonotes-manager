@@ -6,6 +6,5 @@ FactoryGirl.define do
     content "test"
     lat 1.0
     lon 1.0
-    #geolocation RGeo::Geographic.spherical_factory.point(0, 0)
   end
 end

@@ -3,7 +3,6 @@ class CreateNotes < ActiveRecord::Migration
     create_table :notes do |t|
       t.integer :user_id
       t.string :content
-      # t.point :geolocation
       t.float :latitude
       t.float :longitude
       t.timestamps

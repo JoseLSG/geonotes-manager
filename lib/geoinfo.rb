@@ -23,7 +23,7 @@ module Geoinfo
       street = list
     else
       street = list.first if !list.nil?
-      #street = list.sort_by{|x| x[:distance.to_s]}.first
+      #street = list.sort_by{|x| x[:distance.to_s]}.first # no need for sorting, web service sorts them asc
     end
     
     if street.nil?

@@ -42,8 +42,8 @@ function map_index(){
 	function map_click(e){
 
 		userMarker = new L.Marker(e.latlng);
-		$("#content_section #new_note_lat").attr("value", e.latlng.lat);
-		$("#content_section #new_note_lon").attr("value", e.latlng.lng);
+		$("#content_section #new_note_latitude").attr("value", e.latlng.lat);
+		$("#content_section #new_note_longitude").attr("value", e.latlng.lng);
 		var form = $("#new_note_handle").html();
 		userMarker.bindPopup(form);
 
@@ -73,8 +73,8 @@ function map_show_note(map){
 
 function locate_marker_popup(element_id, map){
 	var note = $(element_id);
-	var lat = note.find("#note_lat").attr("value");
-	var lon = note.find("#note_lon").attr("value");
+	var lat = note.find("#note_latitude").attr("value");
+	var lon = note.find("#note_longitude").attr("value");
 
 	var marker = set_marker(lat,lon,note.get(0))
 	
