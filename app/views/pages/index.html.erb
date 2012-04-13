@@ -1,6 +1,6 @@
 <%= javascript_include_tag "navigation" %>
 <div id="header" data-role="header" data-position="fixed">
-	<%= link_to 'Sign out', destroy_user_session_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear" %>
+	<%= link_to 'Sign out', destroy_user_session_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear", 'data-ajax' => :false%>
 	<h1>Main Menu</h1>
 </div>
 
@@ -8,7 +8,7 @@
 	<div class="content-main-menu">
 		<%= render "shared/flash_messages"%>
 		<ul data-role="listview" data-inset="true">
-			<li><%= link_to 'Map', map_path, :'data-ajax' => :false, :id => "Map" %></li>
+			<li><%= link_to 'Map', map_path, 'data-ajax' => :false, :id => "Map" %></li>
 			<li><%= link_to 'Notes', notes_path, :id => "Notes" %></li>
 			<li><%= link_to 'Profile', edit_user_registration_path, :id => "Profile" %></li>
 		</ul>
