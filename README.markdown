@@ -1,13 +1,26 @@
 # GeoNotes Manager: sample application ( in progress )
 
-This sample application allows registered users to add, remove, and edit notes which they can place on geographical map. Also allows to add tag words to the notes for filtering capabilities.
+This sample application allows registered users to add, remove, and edit notes which they can place on a geographical map. 
+Also allows to add tag words to the notes for filtering capabilities.
+
+Features:
+* Taggable notes
+* Basic filtering of map notes by their tags
+* Notes page to allow for quick lookup of notes on map
+* Location detection for each note added
+
 
 Main open source technologies used:
 
 * Leaflet
 * Devise
 * jQuery-mobile
-* rGeo
+* GeoNames (web service)
+* HTTParty
+* rGeo (Removed: uses activerecord-mysql2spatial-adapter gem which causes conflicts with rails 3.2.)
+* Mysql
+
+* Note: originally developped on Rails 3.0.11 and then upgraded to 3.1.3 follow by 3.2.2
 
 ##Installation notes
 
