@@ -1,7 +1,8 @@
+<%= javascript_include_tag "navigation" %>
 <div id="header" data-role="header" data-position="fixed">
 	<%= link_to 'Menu', root_path, "class" => "ui-btn-left", "data-icon" => "home" %>
 	<h1>Notes</h1>
-	<%= link_to 'Map', map_path, "data-ajax" => "false", "class" => "ui-btn-right", "data-icon" => "grid" %>
+	<%= link_to 'Map', map_path, :id => "Map", "data-ajax" => "false", "class" => "ui-btn-right", "data-icon" => "grid" %>
 </div>
 
 <div data-role="content">
@@ -10,7 +11,7 @@
 
 		<% @notes.each do |note| %>
 			<li>
-					<%= link_to note, :'data-ajax' => :false, :class => :note_content do %>
+					<%= link_to note, :id => "Note", :'data-ajax' => :false, :class => :note_content do %>
 						<h3><%= note.content %></h3>
 						<% if note.tag_list.length != 0 then %>
 							Tags: <span class="note_tag"><%= note.tag_list %></span>
