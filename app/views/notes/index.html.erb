@@ -6,22 +6,24 @@
 </div>
 
 <div data-role="content">
-	<%= render "shared/flash_messages"%>
-	<ul data-role="listview" data-inset="true" data-filter="true">
-
-		<% @notes.each do |note| %>
-			<li>
-					<%= link_to note, :id => "Note", :'data-ajax' => :false, :class => :note_content do %>
-						<h3><%= note.content %></h3>
-						<% if note.tag_list.length != 0 then %>
-							Tags: <span class="note_tag"><%= note.tag_list %></span>
-						<% end %>
-						<% if !note.region.nil? and !note.local.nil? then%>
-							<br />Location: <%= "#{note.region.continent}, #{note.region.country}, #{note.region.state}, #{note.local.city}, #{note.local.borough}"%>
-						<% end %>
-					<% end %>
-			</li>
-		<% end %>
+	<div class="content-note">
+		<%= render "shared/flash_messages"%>
+		<ul data-role="listview" data-inset="true" data-filter="true">
 	
-	</ul>
+			<% @notes.each do |note| %>
+				<li>
+						<%= link_to note, :id => "Note", :'data-ajax' => :false, :class => :note_content do %>
+							<h3><%= note.content %></h3>
+							<% if note.tag_list.length != 0 then %>
+								Tags: <span class="note_tag"><%= note.tag_list %></span>
+							<% end %>
+							<% if !note.region.nil? and !note.local.nil? then%>
+								<br />Location: <%= "#{note.region.continent}, #{note.region.country}, #{note.region.state}, #{note.local.city}, #{note.local.borough}"%>
+							<% end %>
+						<% end %>
+				</li>
+			<% end %>
+		
+		</ul>
+	</div>
 </div>

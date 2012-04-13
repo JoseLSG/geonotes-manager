@@ -31,3 +31,24 @@
 .tag {
 	text-decoration: none;
 }
+
+#header .ui-icon   {
+	left: 3px;
+}
+
+#header .ui-btn-inner {
+	padding: 5px 8px 5px 26px;
+}
+
+.content-note {
+	margin: 0px 1% 0px 1%;
+}
+
+.content-main-menu {
+	margin: 0px 2% 0px 3%;
+}
+
+.ui-checkbox .remember-me {
+	margin: .5em 5px;
+}
+
