@@ -10,8 +10,11 @@ gem 'rails', '3.2.2'
 gem 'mysql2'
 gem 'jquery-rails'
 gem 'devise', '1.5.3'
-gem 'activerecord-mysql2spatial-adapter' # dont forget to change adapter name to 'mysql2spatial'
 gem 'httparty'
+# gem 'geocoder'
+# gem 'GeoRuby'
+# gem 'spatial_adapter'
+#gem 'activerecord-mysql2spatial-adapter' # dont forget to change adapter name to 'mysql2spatial'
 
 group :test, :development do
   gem 'rspec-rails'

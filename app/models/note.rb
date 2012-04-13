@@ -18,9 +18,10 @@ class Note < ActiveRecord::Base
   belongs_to :local
   has_and_belongs_to_many :tags, :uniq => true
   
-  set_rgeo_factory_for_column(:geolocation, RGeo::Geographic.spherical_factory)
+  # set_rgeo_factory_for_column(:geolocation, RGeo::Geographic.spherical_factory)
   
-  validates :geolocation, :presence => true
+  validates :latitude, :presence => true
+  validates :longitude, :presence => true
   validates :user_id, :presence => true
   
   attr_accessor :lat, :lon, :tag_list
@@ -64,23 +65,23 @@ class Note < ActiveRecord::Base
     
     ns = nearest_street
     li = location_info
-    puts ns
-    puts li
-    
+    # puts ns
+    # puts li
+
    self.region = Region.where(
                     :continent  => li[:continent],
                     :country    => li[:country],
                     :state      => li[:state]
-                  ).first_or_create
+                  ).first_or_create unless li.nil?
                   
    self.local = Local.where(
-                  :city     => li[:city],
-                  :borough  => li[:borough],
-                  :street   => ns[:name]
+                  :city     => (li[:city] unless li.nil?),
+                  :borough  => (li[:borough] unless li.nil?),
+                  :street   => (ns[:name] unless ns.nil?)
                 ).first_or_create
                 
-    puts self.region.inspect
-    puts self.local.inspect
+    # puts self.region.inspect
+    # puts self.local.inspect
 
   end
   
@@ -91,7 +92,9 @@ class Note < ActiveRecord::Base
   end
   
   def set_geolocation
-    self.geolocation = RGeo::Geographic.spherical_factory.point(lon, lat)
+    #self.geolocation = RGeo::Geographic.spherical_factory.point(lon, lat)
+    self.latitude = lat
+    self.longitude = lon
   end
 
 end

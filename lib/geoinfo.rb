@@ -12,7 +12,7 @@ module Geoinfo
   def coordinates(lat,lon)
     @lat = lat
     @lon = lon
-    puts "lat=#{@lat}&lng=#{@lon}"
+    # puts "lat=#{@lat}&lng=#{@lon}"
   end
   
   def nearest_street
@@ -22,11 +22,15 @@ module Geoinfo
     if list.class == Hash  #if the list has only 1 element, its going to be a hash and not array class
       street = list
     else
-      street = list.first
+      street = list.first if !list.nil?
       #street = list.sort_by{|x| x[:distance.to_s]}.first
     end
     
-    (street.symbolize_keys![:distance].to_f < STREET_MAX_DISTANCE)? street : nil
+    if street.nil?
+      nil
+    else
+      (street.symbolize_keys![:distance].to_f < STREET_MAX_DISTANCE)? street : nil
+    end
   end
   
   # returns an array of nearby streets info
@@ -38,12 +42,14 @@ module Geoinfo
   # returns a Hash of nearby location info with symbols as keys
   def location_info
     location_info = extended_nearby_info
-
-    { :continent  => location_info[1]["toponymName"],
-      :country    => location_info[2]["toponymName"],
-      :state      => location_info[3]["toponymName"],
-      :city       => location_info[4]["toponymName"],
-      :borough    => (location_info[5]["toponymName"] unless location_info.length < 6) }
+    
+    if !location_info.nil? 
+      { :continent  => location_info[1]["toponymName"],
+        :country    => location_info[2]["toponymName"],
+        :state      => location_info[3]["toponymName"],
+        :city       => location_info[4]["toponymName"],
+        :borough    => (location_info[5]["toponymName"] unless location_info.length < 6) }
+    end
   end
   
   # returns an array of near_by location info

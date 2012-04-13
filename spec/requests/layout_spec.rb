@@ -37,7 +37,7 @@ describe "Layout" do
     end
     
     it "should have a 'Sign in' button" do
-      response.should have_selector('div #user_submit', :type => "submit", :value => "Sign in")
+      response.should have_selector('input', :type => "submit", :value => "Sign in")
     end
     
     it "should have a 'Sign up' button" do
@@ -86,7 +86,7 @@ describe "Layout" do
     end
     
     it "should have a 'Register' button" do
-      response.should have_selector('div #user_submit', :type => "submit", :value => "Register")
+      response.should have_selector('input', :type => "submit", :value => "Register")
     end
     
   end
@@ -116,7 +116,7 @@ describe "Layout" do
     end
     
     it "should have a 'send instructions' button" do
-      response.should have_selector('div #user_submit', :type => "submit", :value => "Send me reset password instructions")
+      response.should have_selector('input', :type => "submit", :value => "Send me reset password instructions")
     end
 
   end

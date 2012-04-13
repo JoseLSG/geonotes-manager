@@ -17,16 +17,17 @@ ActiveRecord::Schema.define(:version => 20120412045715) do
     t.string   "city"
     t.string   "borough"
     t.string   "street"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
     t.string   "content"
-    t.spatial  "geolocation", :limit => {:type=>"point"}
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "region_id"
     t.integer  "local_id"
   end
@@ -40,14 +41,14 @@ ActiveRecord::Schema.define(:version => 20120412045715) do
     t.string   "continent"
     t.string   "country"
     t.string   "state"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -65,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20120412045715) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.string   "username"
   end
 
