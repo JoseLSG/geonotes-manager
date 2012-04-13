@@ -43,7 +43,7 @@ class Note < ActiveRecord::Base
   end
   
   def save_location
-    coordinates(self.lat, self.lon)
+    coordinates(latitude, longitude)
     
     ns = nearest_street
     li = location_info
@@ -62,13 +62,9 @@ class Note < ActiveRecord::Base
   end
   
   def save_tags
-    puts self.tags
     self.tags = tag_list.split(/\s*,\s*/).uniq.map{ |tag_name| 
                   Tag.find_or_create_by_name(:name => tag_name)
-                }
-                
-                puts "==="
-                puts self.tags
+                }             
   end
   
   def set_geolocation

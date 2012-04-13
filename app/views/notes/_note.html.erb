@@ -5,6 +5,7 @@
 	<p><%= render "shared/flash_messages"%></p>
 	<p><%= note.content %></p>
 	<p><%= tag_links(note.tags) %></p>
+	<p><%= regional_info(note) %></p>
 	<%= hidden_field_tag :note_latitude, note.latitude %>
 	<%= hidden_field_tag :note_longitude, note.longitude %> 
 	<%= link_to 'Edit', edit_note_path(note), :"data-role" => :button, :id => "edit", :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>

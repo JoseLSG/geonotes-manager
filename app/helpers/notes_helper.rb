@@ -7,4 +7,8 @@ module NotesHelper
     end
     raw html
   end
+  
+  def regional_info(note)
+    "#{note.region.country}, #{note.region.state}, #{note.local.city}" unless note.region.nil?
+  end
 end

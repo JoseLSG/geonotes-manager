@@ -12,7 +12,7 @@ module Geoinfo
   def coordinates(lat,lon)
     @lat = lat
     @lon = lon
-    # puts "lat=#{@lat}&lng=#{@lon}"
+     #puts "lat=#{@lat}&lng=#{@lon}"
   end
   
   def nearest_street
@@ -42,7 +42,7 @@ module Geoinfo
   # returns a Hash of nearby location info with symbols as keys
   def location_info
     location_info = extended_nearby_info
-    
+
     if !location_info.nil? 
       { :continent  => location_info[1]["toponymName"],
         :country    => location_info[2]["toponymName"],
