@@ -10,7 +10,7 @@
 //	since using load(),on("initpage",..), etc doesn't seem to be working properly in current nor RC jquery mobile version
 
 $(function() {
-
+	
 	var map = map_index();
 
 	if($("#edit_note_handle").length == 1) {
@@ -117,8 +117,8 @@ function set_nav_controls(map, callback){
 function load_notes(map){
 
 	$("#load_notes").find("[type=note]").each(function(i, elm) {
-		var lat = $(this).find('#note_lat').val(), 
-				lon = $(this).find('#note_lon').val(), 
+		var lat = $(this).find('#note_latitude').val(), 
+				lon = $(this).find('#note_longitude').val(), 
 				html = $(this).addClass("popup").get(0);
 
 		//notes_ary[i] = new L.LatLng(lat, lon);
