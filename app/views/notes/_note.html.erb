@@ -3,10 +3,12 @@
 
 <div id="note_<%=note.id%>" type="note" class="popup">
 	<div class="content-note">
-		<p><%= render "shared/flash_messages"%></p>
-		<p><%= note.content %></p>
-		<p><%= tag_links(note.tags) %></p>
-		<p><%= regional_info(note) %></p>
+		<div class="content-note-text">
+			<p><%= render "shared/flash_messages"%></p>
+			<p><%= note.content %></p>
+			<p><%= tag_links(note.tags) %></p>
+			<p><%= regional_info(note) %></p>
+		</div>
 		<%= hidden_field_tag :note_latitude, note.latitude %>
 		<%= hidden_field_tag :note_longitude, note.longitude %> 
 		

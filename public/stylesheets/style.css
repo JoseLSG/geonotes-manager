@@ -19,12 +19,13 @@
 
 .note_content{
 	margin: 6px 0px 0px 0px;
-	font-size: 18px;
-	font-weight: 500;
+	font-size: 16px;
+	font-weight: bold;
+	white-space: normal;
 }
 
 .note_cell #Note {
-	padding: 0px 17px 5px 17px;
+	padding: 10px 70px 10px 17px;
 }
 
 .note_tag {
@@ -38,6 +39,7 @@
 	font-weight: normal;
 	font-style: oblique;
 	font-size: 12px;
+	white-space:normal;
 }
 
 .tag {
@@ -65,8 +67,12 @@
 	width: 140px;
 }
 
-.content_note_test {
-	width: 88%;
+.content-note-text p {
+	margin: 8px 0 ! important;
+}
+
+.content-note-input {
+	width: 88% ! important;
 }
 
 .content-main-menu {
