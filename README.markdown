@@ -3,6 +3,8 @@
 This sample application allows registered users to add, remove, and edit notes which they can place on a geographical map. 
 Also allows to add tag words to the notes for filtering capabilities.
 
+* Note: meant for mobile devices first.
+
 Features:
 * Taggable notes
 * Basic filtering of map notes by their tags
