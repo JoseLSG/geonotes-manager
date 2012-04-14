@@ -11,15 +11,11 @@
 		<ul data-role="listview" data-inset="true" data-filter="true">
 	
 			<% @notes.each do |note| %>
-				<li>
-						<%= link_to note, :id => "Note", :'data-ajax' => :false, :class => :note_content do %>
-							<h3><%= note.content %></h3>
-							<% if note.tag_list.length != 0 then %>
-								Tags: <span class="note_tag"><%= note.tag_list %></span>
-							<% end %>
-							<% if !note.region.nil? and !note.local.nil? then%>
-								<br />Location: <%= "#{note.region.continent}, #{note.region.country}, #{note.region.state}, #{note.local.city}, #{note.local.borough}"%>
-							<% end %>
+				<li class="note_cell">
+						<%= link_to note, :id => "Note", :'data-ajax' => :false do %>
+							<p class="note_content"><%= note.content %></p>
+							<span class="note_tag">Tags: <span class="tag_list"><%= note.tag_list %></span></span><br />
+							<span class="note_location">Location: <%= location_info(note) %></span>
 						<% end %>
 				</li>
 			<% end %>
