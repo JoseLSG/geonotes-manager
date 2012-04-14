@@ -1,16 +1,19 @@
 <div id="new_note_handle">
 	<div id="new_note_form" class="popup">
-	<%= form_for :new_note, :url => create_note_path, :html => {:method => :post, :'data-ajax' => :false, :'data-type' => :html}, :remote => true do |f| %>
-		  <%= render "shared/flash_messages"%>	
-		  <div id="content_section">
-			  <%= f.label :content %>
-			  <%= f.text_area :content %>
-			  <%= f.label "Tags" %>
-			  <%= f.text_field :tag_list %>
-			  <%= f.hidden_field :latitude %>
-				<%= f.hidden_field :longitude %> 
-		  </div>
-		  <div><%= f.submit "Submit", :id => "Submit"%></div>
-	<% end %>
+		<div class="content-note">
+			<%= form_for :new_note, :url => create_note_path, :html => {:method => :post, :'data-ajax' => :false, :'data-type' => :html}, :remote => true do |f| %>
+				  <%= render "shared/flash_messages"%>	
+				  <div id="content_section">
+					  <%= f.label :content %>
+					  <%= f.text_area :content, :class => :content_note_test %>
+					  <%= f.label "Tags" %>
+					  <%= f.text_field :tag_list, :class => :content_note_test %>
+					  <%= f.hidden_field :latitude %>
+						<%= f.hidden_field :longitude %> 
+				  </div>
+				  <div><%= f.submit "Submit", :id => "Submit"%></div>
+				
+			<% end %>
+		</div>
 	</div>
 </div>

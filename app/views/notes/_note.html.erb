@@ -2,12 +2,15 @@
 <% note ||= @note %>
 
 <div id="note_<%=note.id%>" type="note" class="popup">
-	<p><%= render "shared/flash_messages"%></p>
-	<p><%= note.content %></p>
-	<p><%= tag_links(note.tags) %></p>
-	<p><%= regional_info(note) %></p>
-	<%= hidden_field_tag :note_latitude, note.latitude %>
-	<%= hidden_field_tag :note_longitude, note.longitude %> 
-	<%= link_to 'Edit', edit_note_path(note), :"data-role" => :button, :id => "edit", :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
-	<%= link_to 'Delete', "/delete_note/#{note.id}", :"data-role" => :button, :id => "delete", :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
+	<div class="content-note">
+		<p><%= render "shared/flash_messages"%></p>
+		<p><%= note.content %></p>
+		<p><%= tag_links(note.tags) %></p>
+		<p><%= regional_info(note) %></p>
+		<%= hidden_field_tag :note_latitude, note.latitude %>
+		<%= hidden_field_tag :note_longitude, note.longitude %> 
+		
+		<%= link_to 'Edit', edit_note_path(note), :"data-role" => :button, :id => "edit", :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
+		<%= link_to 'Delete', "/delete_note/#{note.id}", :"data-role" => :button, :id => "delete", :class => "ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow ui-btn-up-undefined edit_form_button" %>
+	</div>
 </div>

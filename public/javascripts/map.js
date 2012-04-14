@@ -41,11 +41,11 @@ function map_index(){
 	
 	function map_click(e){
 
-		userMarker = new L.Marker(e.latlng);
 		$("#content_section #new_note_latitude").attr("value", e.latlng.lat);
 		$("#content_section #new_note_longitude").attr("value", e.latlng.lng);
 		var form = $("#new_note_handle").html();
-		userMarker.bindPopup(form);
+		
+		userMarker = set_marker(e.latlng.lat,e.latlng.lng,form);
 
 		groupL.addLayer(userMarker);
 
@@ -89,7 +89,10 @@ function handle_note_submit_response(marker){
 	$("form[data-remote]").each(function(i, form) {
 		var f = $(form)
 		f.on("ajax:success", function(evt, data, status, xhr) {
-			marker.closePopup().bindPopup(xhr.responseText).openPopup();
+			
+			marker.closePopup()
+			set_popup(marker, xhr.responseText)
+			marker.openPopup();
 		});
 		
 		f.find("#Submit").on("click", function(evt, data, status, xhr) {
@@ -134,10 +137,14 @@ function load_notes(map){
 function set_marker(lat,lon,html){
 
 	marker = new L.Marker(new L.LatLng(lat, lon));
-	marker.bindPopup(html);
+	set_popup(marker, html);
 	return marker;
 
 };
+
+function set_popup(marker, html){
+	marker.bindPopup(html, {maxWidth:180});
+}
 
 function map_set(map){
 

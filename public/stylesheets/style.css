@@ -40,8 +40,17 @@
 	padding: 5px 8px 5px 26px;
 }
 
-.content-note {
+.content-notes {
 	margin: 0px 1% 0px 1%;
+}
+
+/*related to popup maxWidth in map.js > set_marker */
+.content-note {
+	width: 140px;
+}
+
+.content_note_test {
+	width: 88%;
 }
 
 .content-main-menu {
