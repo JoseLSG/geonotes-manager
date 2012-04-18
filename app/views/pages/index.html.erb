@@ -1,6 +1,6 @@
 <%= javascript_include_tag "navigation" %>
 <div id="header" data-role="header" data-position="fixed">
-	<%= link_to 'Sign out', destroy_user_session_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear", 'data-ajax' => :false%>
+	<%= button_to 'Sign out', destroy_user_session_path, :method => :delete, "class" => "ui-btn-left", "data-icon" => "gear", 'data-ajax' => :false %>
 	<h1>Main Menu</h1>
 </div>
 
