@@ -6,10 +6,11 @@ Also allows to add tag words to the notes for filtering capabilities.
 * Note: meant for mobile devices first.
 
 Features:
-* Taggable notes
-* Basic filtering of map notes by their tags
-* Notes page to allow for quick lookup of notes on map
-* Location detection for each note added
+
+- Taggable notes
+- Basic filtering of map notes by their tags
+- Allows for quick lookup of notes on map from Notes page
+- Location detection for each note added
 
 
 Main open source technologies used:
@@ -27,6 +28,7 @@ Main open source technologies used:
 ##Installation notes
 
 Git clone this repo and if you want confirmation email to work, you will need to:
+
 1. Commented back in the :confirmable symbole in user.rb
 2. Add smtp server details and app host ip in development.rb
 
@@ -40,7 +42,7 @@ user.rb
 
 development.rb
 
-    config.action_mailer.default_url_options = { :host => 'http://1.1.1.1:3000' }
+    config.action_mailer.default_url_options = { :host => '1.1.1.1:3000' }
   
 using gmail account to send email
  
