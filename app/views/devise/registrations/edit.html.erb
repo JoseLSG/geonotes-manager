@@ -4,36 +4,38 @@
 </div>
 
 <div data-role="content">
-	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-	  <%= render "shared/flash_messages"%>
-	  <%= devise_error_messages! %>
-	
-	  <div id="email_section">
-		  <%= f.label :username %>
-		  <%= f.text_field :username %> 
-		  
-		  <%= f.label :email %>
-		  <%= f.email_field :email %>
-	  </div>
-	
-	  <div id="password_section">
-	  	<%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-	  	<%= f.password_field :password %>
-	  </div>
-	
-	  <div id="password_confirmation_section">
-	  	<%= f.label :password_confirmation %>
-	  	<%= f.password_field :password_confirmation %>
-	  </div>
-	
-	  <div id="current_password_section">
-	  	<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-	  	<%= f.password_field :current_password %>
-	  </div>
-	
-	  <div><%= f.submit "Update", :id => "Update"%></div>
-	<% end %>
-	
-<p><%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete,
-							 "data-role" => "button", :id => "Cancel" %></p>
+	<div class="content-main-menu">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+		  <%= render "shared/flash_messages"%>
+		  <%= devise_error_messages! %>
+		
+		  <div id="email_section">
+			  <%= f.label :username %>
+			  <%= f.text_field :username %> 
+			  
+			  <%= f.label :email %>
+			  <%= f.email_field :email %>
+		  </div>
+		
+		  <div id="password_section">
+		  	<%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+		  	<%= f.password_field :password %>
+		  </div>
+		
+		  <div id="password_confirmation_section">
+		  	<%= f.label :password_confirmation %>
+		  	<%= f.password_field :password_confirmation %>
+		  </div>
+		
+		  <div id="current_password_section">
+		  	<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+		  	<%= f.password_field :current_password %>
+		  </div>
+		
+		  <div><%= f.submit "Update", :id => "Update"%></div>
+		<% end %>
+		
+		<p><%= link_to "Cancel my account", registration_path(resource_name),
+		 				:confirm => "Are you sure?", :method => :delete, "data-role" => "button", :id => "Cancel" %></p>
+	</div>
 </div>
