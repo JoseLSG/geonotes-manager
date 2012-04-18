@@ -23,7 +23,7 @@ describe "Layout" do
     end
     
     it "should have a 'GeoNotes Manager' title" do
-      response.should have_selector('h1', :content => "GeoNotes Manager")
+      response.should have_selector('h1', :content => "GeoNotes")
     end
     
     it "should have a login input section" do
@@ -133,7 +133,7 @@ describe "Layout" do
     end
     
     it "should have a 'Sign out' button" do
-      response.should have_selector('a', :content => "Sign out")
+      response.should have_selector('input', :value => "Sign out")
     end
     
     it "should have a 'Map' button" do
@@ -186,7 +186,7 @@ describe "Layout" do
     end
     
     it "should have a 'cancel account' button" do
-      response.should have_selector('a', :content => "Cancel")
+      response.should have_selector('input#Cancel')
     end
     
   end

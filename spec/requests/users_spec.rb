@@ -118,7 +118,7 @@ describe "Users" do
     describe "Cancel Account" do
       
       it "should cancel account correctly" do
-        click_link "Cancel"
+        click_button "Cancel"
        # click_button "OK"
         response.should render_template('pages/index')
       end
