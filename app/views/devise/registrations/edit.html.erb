@@ -34,8 +34,8 @@
 		
 		  <div><%= f.submit "Update", :id => "Update"%></div>
 		<% end %>
-		
-		<p><%= link_to "Cancel my account", registration_path(resource_name),
+
+		<p><%= button_to "Cancel my account", registration_path(resource_name),
 		 				:confirm => "Are you sure?", :method => :delete, "data-role" => "button", :id => "Cancel" %></p>
 	</div>
 </div>
