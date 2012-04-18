@@ -83,3 +83,13 @@
 	margin: .5em 5px;
 }
 
+.user_login {
+	right: 50px;
+	position: absolute;
+	top: 8px;
+}
+
+.deco_login {
+	font-size: 12px;
+	font-style: oblique;
+}
