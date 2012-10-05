@@ -7,19 +7,22 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
 gem 'jquery-rails'
 gem 'devise', '1.5.3'
 gem 'httparty'
 # gem 'geocoder'
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'webrat'
   gem 'guard-rspec'
   gem 'annotate'
   gem 'factory_girl_rails'
   gem 'rails-footnotes', '>= 3.7.5.rc4'
+end
+group :production do
+  gem 'mysql2'
 end
 
 # Use unicorn as the web server

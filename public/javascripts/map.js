@@ -20,7 +20,9 @@ $(function() {
 		map_show_note(map);
 		
 	} else {
-		map.locateAndSetView(16);
+		//map.locateAndSetView(16);
+		map.locate({setView: true});
+		map.setZoom(16);
 	}
 
 });
